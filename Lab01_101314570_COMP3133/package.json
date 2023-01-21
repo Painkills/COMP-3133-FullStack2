@@ -1,0 +1,16 @@
+{
+  "name": "lab01_101314570_comp3133",
+  "version": "1.0.0",
+  "description": "Lab Exercise 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "David Fortich",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  }
+}
