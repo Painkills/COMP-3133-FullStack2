@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Client</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // var socket = io("http://localhost:8088")
+        // socket.on("welcome", (data) => {
+        //     console.log(data)
+        // })
+
+        // socket.emit("hello", "hey mister server!")
+
+        // socket.on("notice", (data) => {
+        //     console.log(data)
+        // })
+        var socket = io();
+        function setUsername() {
+            socket.emit('setUsername', document.getElementById('name').value())
+        }
+        var user;
+        socket.on('userExists', function(data) {
+            document.getElementById('error-container').innerHTML = data;
+        });
+        socket.on('userSet', function(data) {
+            user = data.username;
+            document.body.innerHTML = '<input type = "text" id = "message">\
+            <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
+            <div id = "message=container"></div>';
+        })
+        function sendMessage() {
+            var msg = document.getElementById('message').value;
+            if(msg) {
+                socket.emit('msg', {message: msg, user: user})
+            }
+        }
+        socket.on('newmsg', function(data) {
+            if(user) {
+                document.getElementById('message-container').innerHTML += '<div'
+            }
+        })
+    </script>
+</head>
+<body>
+    <h1>This is the Socket Client</h1>
+    <div id = "error-container"></div>
+    
+</body>
+</html>
