@@ -22,9 +22,9 @@ app.get('/restaurants', async (req, res) => {
     // If there's a query for sorting, do so. If not, return all restaurants with all data.
     let restaurants
     if (req.query.sortBy) {
-        restaurants = await restaurantModel.find({}).select("_id restaurant_id cuisine name city").sortByRestaurantId(req.query.sortBy)
+      restaurants = await restaurantModel.find({}).select("_id restaurant_id cuisine name city").sortByRestaurantId(req.query.sortBy)
     } else {
-        restaurants = await restaurantModel.find({})
+      restaurants = await restaurantModel.find({})
     }
     
 
