@@ -88,7 +88,7 @@ var app = express();
 app.use('/gql', graphqlHTTP({
     schema: schema,     //Set schema
     rootValue: root,    //Set resolver
-    graphiql: false      //Client access
+    graphiql: true      //Client access
 }));
 
 app.listen(SERVER_PORT, () => console.log(`Express GraphQL Server Now Running On http://localhost:${SERVER_PORT}/graphql`));
